@@ -1,0 +1,7 @@
+[
+    { "id": 1, "name": "Hamza", "age": 22, "nationality": "Pakistani" },
+    { "id": 2, "name": "Sebestian", "age": 25, "nationality": "Columbian" },
+    { "id": 3, "name": "Ayush", "age": 20, "nationality": "Nepali" },
+    { "id": 4, "name": "Kien", "age": 23, "nationality": "Vietnami" },
+    { "id": 5, "name": "Rayan", "age": 21, "nationality": "Indian" }
+]
