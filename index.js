@@ -41,7 +41,7 @@ const dataset = require('./dataset.json')
   display('After Deleting Index 2');
   
   // Update (e.g., index 1 — Sebestian → Updated)
-  updateElement(1, 'Sebestian Updated', 26, 78);
+  updateElement(1, 'Sebestian Updated', 26, "Columbian + Francais");
   display('After Updating Index 1');
   
   // Sort by Age
