@@ -39,7 +39,7 @@ const dataset = require('./dataset.json')
   addElement('Mac M2', 1500, "grey");
   display('After Adding Mac M2');
   
-  // Delete (e.g., index 2 — Ayush)
+  // Delete (e.g., index 2 — HP Elitebook)
   deleteElementByIndex(2);
   display('After Deleting Index 2');
   
