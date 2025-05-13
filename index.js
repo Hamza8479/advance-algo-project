@@ -56,6 +56,7 @@ const dataset = require('./dataset.json')
   display('Sorted by price');
   
   // Filter: price >= 1000
+//   uses linear iteration
   const filtered = filterByprice(1000);
   display('Filtered by price >= 1000', filtered);
   
