@@ -1,7 +1,7 @@
 [
-    { "id": 1, "name": "Hamza", "age": 22, "nationality": "Pakistani" },
-    { "id": 2, "name": "Sebestian", "age": 25, "nationality": "Columbian" },
-    { "id": 3, "name": "Ayush", "age": 20, "nationality": "Nepali" },
-    { "id": 4, "name": "Kien", "age": 23, "nationality": "Vietnami" },
-    { "id": 5, "name": "Rayan", "age": 21, "nationality": "Indian" }
+    { "id": 1, "name": "Dell XPS 9510", "price": 1000, "color": "white" },
+    { "id": 2, "name": "Mac M1", "price": 1200, "color": "grey" },
+    { "id": 3, "name": "HP Elitebook", "price": 900, "color": "black" },
+    { "id": 4, "name": "Asus", "price": 850, "color": "blue" },
+    { "id": 5, "name": "Lenovo thinkpad", "price": 800, "color": "black" }
 ]

@@ -5,9 +5,9 @@ const dataset = require('./dataset.json')
     console.table(data);
   };
   
-  const addElement = (name, age, score) => {
+  const addElement = (name, price, color) => {
     const id = dataset.length + 1;
-    dataset.push({ id, name, age, score });
+    dataset.push({ id, name, price, color });
   };
   
   const deleteElementByIndex = (index) => {
@@ -16,43 +16,46 @@ const dataset = require('./dataset.json')
     }
   };
   
-  const updateElement = (index, name, age, nationality) => {
+  
+  // update specific index by giving name , price and color values
+  const updateElement = (index, name, price, color) => {
     if (index >= 0 && index < dataset.length) {
-      dataset[index] = Object.assign({}, dataset[index], { name, age, nationality });
+      dataset[index] = Object.assign({}, dataset[index], { name, price, color });
     }
   };
   
+  // sorted in ascendeing order if  want to order in descending do b - a
   const sortByAttribute = (attr) => {
     dataset.sort((a, b) => a[attr] - b[attr]);
   };
   
-  const filterByAge = (minAge) => {
-    return dataset.filter(person => person.age >= minAge);
+  const filterByprice = (minprice) => {
+    return dataset.filter(data => data.price >= minprice);
   };
   
   display('Initial Dataset');
   
   // Add
-  addElement('Adeel', 24, "Italien");
-  display('After Adding Adeel');
+  addElement('Mac M2', 1500, "grey");
+  display('After Adding Mac M2');
   
   // Delete (e.g., index 2 — Ayush)
   deleteElementByIndex(2);
   display('After Deleting Index 2');
   
-  // Update (e.g., index 1 — Sebestian → Updated)
-  updateElement(1, 'Sebestian Updated', 26, "Columbian + Francais");
+  // Update (e.g., index 1 — Dell → Updated)
+  updateElement(1, 'Dell XPS 15', 1400, "black");
   display('After Updating Index 1');
   
-  // Sort by Age
-  sortByAttribute('age');
-  display('Sorted by Age');
+  // Sort by price
+  sortByAttribute('price');
+  display('Sorted by price');
   
-  // Sort by nationality
-  sortByAttribute('nationality');
-  display('Sorted by Nationality');
+  // Sort by color
+  sortByAttribute('price');
+  display('Sorted by price');
   
-  // Filter: Age >= 23
-  const filtered = filterByAge(23);
-  display('Filtered by Age >= 23', filtered);
+  // Filter: price >= 1000
+  const filtered = filterByprice(1000);
+  display('Filtered by price >= 1000', filtered);
   
