@@ -22,9 +22,26 @@ const updateElement = (index, name, price, color) => {
   }
 };
 
-const sortByAttribute = (attr) => {
-  dataset.sort((a, b) => (a[attr] > b[attr] ? 1 : -1));
+// we are using bubble sort here for sorting the array
+const sortByAttribute = (attr, sortBy = 'asc') => {
+  for (let i = 0; i < dataset.length - 1; i++) {
+    for (let j = 0; j < dataset.length - i - 1; j++) {
+      const shouldSwap = sortBy === 'asc'
+        ? dataset[j][attr] > dataset[j + 1][attr]
+        : dataset[j][attr] < dataset[j + 1][attr];
+
+      if (shouldSwap) {
+        [dataset[j], dataset[j + 1]] = [dataset[j + 1], dataset[j]];
+      }
+    }
+  }
+  return dataset;
 };
+
+//  if you want to use predefined function for sorting uncomment below code 
+// const sortByAttribute = (attr) => {
+//   dataset.sort((a, b) => (a[attr] > b[attr] ? 1 : -1));
+// };
 
 const filterByprice = (minprice) => {
   return dataset.filter(data => data.price >= minprice);
