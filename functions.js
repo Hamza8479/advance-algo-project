@@ -5,9 +5,9 @@ const display = (title, data = dataset) => {
   console.table(data);
 };
 
-const addElement = (name, price, color) => {
+const addElement = (name, price, color, createdAt) => {
   const id = dataset.length + 1;
-  dataset.push({ id, name, price, color });
+  dataset.push({ id, name, price, color, createdAt });
 };
 
 const deleteElementByIndex = (index) => {

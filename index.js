@@ -9,7 +9,7 @@ const {
 
 display('Initial Dataset');
 
-addElement('Mac M2', 1500, "grey");
+addElement('Mac M2', 1500, "grey", "2022-04-26");
 display('After Adding Mac M2');
 
 deleteElementByIndex(2);
@@ -21,8 +21,8 @@ display('After Updating Index 1');
 sortByAttribute('price');
 display('Sorted by price');
 
-sortByAttribute('color');
-display('Sorted by color');
+sortByAttribute('price');
+display('Sorted by price');
 
 const filtered = filterByprice(1000);
 display('Filtered by price >= 1000', filtered);
