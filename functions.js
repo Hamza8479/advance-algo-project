@@ -46,8 +46,40 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
 //   dataset.sort((a, b) => (a[attr] > b[attr] ? 1 : -1));
 // };
 
-const filterByprice = (minprice) => {
-  return dataset.filter(data => data.price >= minprice);
+const filterById = (id) => {
+ // Step 1: Sort by price
+  const sorted = sortByAttribute('id');
+
+  // Step 2: Binary search
+  let low = 0;
+  let high = sorted.length - 1;
+  
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2); //get the mid or the leftMid
+    
+    if (dataset[mid]['id'] == id) // Check if Id is present at mid
+        return dataset[mid];
+
+    if (dataset[mid]['id'] < id)  // If Id greater, ignore left half
+        low = mid + 1;
+    else // If x is smaller, ignore right half
+        high = mid - 1;
+  }
+
+  return [];
+};
+
+
+const filterByAtribute = (attr, value) => {
+  const result = [];
+
+  for (let i = 0; i < dataset.length; i++) {
+    if (dataset[i][attr] === value) {
+      result.push(dataset[i]);
+    }
+  }
+
+  return result;
 };
 
 module.exports = {
@@ -56,5 +88,6 @@ module.exports = {
   deleteElementByIndex,
   updateElement,
   sortByAttribute,
-  filterByprice
+  filterById,
+  filterByAtribute
 };
