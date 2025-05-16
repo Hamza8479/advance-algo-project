@@ -4,7 +4,8 @@ const {
   deleteElementByIndex,
   updateElement,
   sortByAttribute,
-  filterByprice
+  filterByprice,
+  sortData
 } = require('./functions');
 
 display('Initial Dataset');
@@ -18,12 +19,13 @@ display('After Deleting Index 2');
 updateElement(1, 'Dell XPS 15', 1400, "black");
 display('After Updating Index 1');
 
-sortByAttribute('createdAt');
-display('Sorted by createdAt');
+// sortByAttribute('createdAt');
+// display('Sorted by createdAt');
 
-sortByAttribute('price', 'desc');
-display('Sorted by price');
-
+// sortByAttribute('price', 'desc');
+// display('Sorted by price');
 
 const filtered = filterByprice(1000);
 display('Filtered by price >= 1000', filtered);
+
+sortData()

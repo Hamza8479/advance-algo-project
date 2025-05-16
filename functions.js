@@ -1,4 +1,8 @@
 const dataset = require('./dataset.json');
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 const display = (title, data = dataset) => {
   console.log(`\n${title}`);
@@ -38,6 +42,40 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
   return dataset;
 };
 
+//  for asking user preferences
+const sortData = () => {
+  readline.question(
+    "\nHow would you like to sort the dataset?\n1. Price\n2. CreatedAt\n3. Color\n4. Name\n5. Id\nSelect from 1 to 5: ",
+    (sortOption) => {
+      let attr;
+      if (sortOption === '1') attr = 'price';
+      else if (sortOption === '2') attr = 'createdAt';
+      else if (sortOption === '3') attr = 'color';
+      else if (sortOption === '4') attr = 'name';
+      else if (sortOption === '5') attr = 'id';
+      else {
+        console.log("Invalid option. Defaulting to 'price'");
+        attr = 'price';
+      }
+
+      readline.question(
+        "Enter sort order (asc / desc): ",
+        (order) => {
+          const sortOrder = (order.toLowerCase() === 'desc') ? 'desc' : 'asc';
+          sortByAttribute(attr, sortOrder);
+          display(`Sorted by ${attr} in ${sortOrder.toUpperCase()} order`);
+
+          readline.close();
+        }
+      );
+    }
+  );
+};
+
+
+
+
+
 // Time complexity in best and worst case for the above code is O(n square) 
 // because both loop will iterate ethier value is swapped or not
 
@@ -56,5 +94,6 @@ module.exports = {
   deleteElementByIndex,
   updateElement,
   sortByAttribute,
-  filterByprice
+  filterByprice,
+  sortData
 };
