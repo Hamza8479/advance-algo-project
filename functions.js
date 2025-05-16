@@ -39,6 +39,7 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
 };
 
 // Time complexity in best and worst case for the above code is O(n square) 
+// because both loop will iterate ethier value is swapped or not
 
 //  if you want to use predefined function for sorting uncomment below code 
 // const sortByAttribute = (attr) => {
