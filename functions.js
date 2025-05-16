@@ -38,6 +38,8 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
   return dataset;
 };
 
+// Time complexity in best and worst case for the above code is O(n square) 
+
 //  if you want to use predefined function for sorting uncomment below code 
 // const sortByAttribute = (attr) => {
 //   dataset.sort((a, b) => (a[attr] > b[attr] ? 1 : -1));
