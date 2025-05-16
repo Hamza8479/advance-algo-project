@@ -4,8 +4,8 @@ const {
   deleteElementByIndex,
   updateElement,
   sortByAttribute,
-  filterByprice,
-  sortData
+  filterByAtribute,
+  mainMenu
 } = require('./functions');
 
 display('Initial Dataset');
@@ -25,7 +25,7 @@ display('After Updating Index 1');
 // sortByAttribute('price', 'desc');
 // display('Sorted by price');
 
-const filtered = filterByprice(1000);
+const filtered = filterByAtribute(1000);
 display('Filtered by price >= 1000', filtered);
 
-sortData()
+mainMenu()
