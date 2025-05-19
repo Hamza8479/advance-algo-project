@@ -10,7 +10,7 @@ const display = (title, data = dataset) => {
 };
 
 const addElement = (name, price, color, createdAt) => {
-  const id = dataset.length + 1;
+  const id = Math.floor(Math.random() * 1000);
   dataset.push({ id, name, price, color, createdAt });
 };
 
