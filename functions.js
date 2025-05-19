@@ -81,7 +81,7 @@ const mainMenu = () => {
 3. Delete element by index
 4. Update element by index
 5. Sort dataset
-6. Filter by minimum price
+6. Filter by attribute
 7. Exit
 Enter your choice (1-7): `,
     (choice) => {
@@ -156,10 +156,12 @@ Enter your choice (1-7): `,
           break;
 
         case '6':
-          readline.question("Enter minimum price to filter: ", (minPrice) => {
-            const filtered = filterByprice(Number(minPrice));
-            display(`Filtered dataset with price >= ${minPrice}`, filtered);
+          readline.question("Enter attribute to filter: ", (attr) => {
+          readline.question("Enter value to filter: ", (value) => {
+            const filtered = filterByAtribute(attr, Number(value));
+            display(`Filtered dataset by attribute ${attr} and its value ${value}`, filtered);
             mainMenu();
+          });
           });
           break;
 
