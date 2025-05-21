@@ -129,6 +129,9 @@ Enter your choice (1-7): `,
                   const sortOrder = (order.toLowerCase() === 'desc') ? 'desc' : 'asc';
                   sortByAttribute(attr, sortOrder); //Asks how to sort → calls sortByAttribute().
                   display(`Sorted by ${attr} in ${sortOrder.toUpperCase()} order`); //O(n²) best O(n)
+                  // So comparing "2025-05-01" and "2024-12-30" using > or < gives you correct
+                  //  chronological (arranged in or according to the order of time) results — as long as the string 
+                  // format is ISO-standard (YYYY-MM-DD or full ISO date-time).
                   mainMenu();
                 }
               );
