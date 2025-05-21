@@ -53,9 +53,9 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
 
 
 const mainMenu = () => {
-  readline.question(
+  readline.question( //built-in readline module to take user input.  //Prompts the user to choose an action (1–7) //Based on the user's input, it: callback function call after the main function execution and takes the input  
     `\nChoose an action:
-1. Display dataset
+1. Display dataset            
 2. Add element
 3. Delete element by index
 4. Update element by index
@@ -66,7 +66,7 @@ Enter your choice (1-7): `,
     (choice) => {
       switch (choice) {
         case '1':
-          display("Current dataset");
+          display("Current dataset"); //Calls display() → shows current dataset //O(n) (to print n items from our dataset)
           mainMenu();
           break;
 
@@ -75,8 +75,8 @@ Enter your choice (1-7): `,
             readline.question("Enter price: ", (price) => {
               readline.question("Enter color: ", (color) => {
                 readline.question("Enter createdAt (e.g., 2025-05-16): ", (createdAt) => {
-                  addElement(name, Number(price), color, createdAt);
-                  console.log("Element added.");
+                  addElement(name, Number(price), color, createdAt); //Asks for 4 fields → calls addElement().
+                  console.log("Element added."); //	O(1) (just pushing into array)
                   mainMenu();
                 });
               });
@@ -86,8 +86,10 @@ Enter your choice (1-7): `,
 
         case '3':
           readline.question("Enter index to delete (starting from 0): ", (index) => {
-            deleteElementByIndex(Number(index));
-            console.log("Element deleted if index was valid.");
+            deleteElementByIndex(Number(index)); //Asks for index → calls deleteElementByIndex().
+            console.log("Element deleted if index was valid."); //	O(n) (due to splice())
+            // array.splice(index, 1) removes one element from the array at a given position (index),
+            //  and shifts all the remaining elements after that index one step to the left.
             mainMenu();
           });
           break;
@@ -97,8 +99,8 @@ Enter your choice (1-7): `,
             readline.question("Enter new name: ", (name) => {
               readline.question("Enter new price: ", (price) => {
                 readline.question("Enter new color: ", (color) => {
-                  updateElement(Number(index), name, Number(price), color);
-                  console.log("Element updated if index was valid.");
+                  updateElement(Number(index), name, Number(price), color); //Asks for index and new values → calls updateElement().
+                  console.log("Element updated if index was valid."); // 	O(1) (direct index access)
                   mainMenu();
                 });
               });
@@ -125,8 +127,8 @@ Enter your choice (1-7): `,
                 "Enter sort order (asc / desc): ",
                 (order) => {
                   const sortOrder = (order.toLowerCase() === 'desc') ? 'desc' : 'asc';
-                  sortByAttribute(attr, sortOrder);
-                  display(`Sorted by ${attr} in ${sortOrder.toUpperCase()} order`);
+                  sortByAttribute(attr, sortOrder); //Asks how to sort → calls sortByAttribute().
+                  display(`Sorted by ${attr} in ${sortOrder.toUpperCase()} order`); //O(n²) best O(n)
                   mainMenu();
                 }
               );
@@ -137,8 +139,8 @@ Enter your choice (1-7): `,
         case '6':
           readline.question("Enter attribute to filter: ", (attr) => {
           readline.question("Enter value to filter: ", (value) => {
-            const filtered = filterByAtribute(attr, Number(value));
-            display(`Filtered dataset by attribute ${attr} and its value ${value}`, filtered);
+            const filtered = filterByAtribute(attr, Number(value)); //Asks for filter → calls filterByAtribute().
+            display(`Filtered dataset by attribute ${attr} and its value ${value}`, filtered); //O(n)
             mainMenu();
           });
           });
@@ -146,7 +148,7 @@ Enter your choice (1-7): `,
 
         case '7':
           console.log("Exiting program...");
-          readline.close();
+          readline.close(); //Exits using readline.close().
           break;
 
         default:
@@ -158,6 +160,11 @@ Enter your choice (1-7): `,
   );
 };
 
+//  menu itself is O(1), but the action chosen affects the total time cost.
+// Menu logic: O(1) (constant space, no extra memory)
+// Displaying, deleting, or updating: in-place, still O(1)
+// Adding: adds 1 element → O(1)
+// Sorting: insertion → O(1)
 
 
 const filterById = (id) => {
