@@ -51,7 +51,11 @@ const sortByAttribute = (attr, sortBy = 'asc') => {
   return dataset;
 };
 
-
+//  menu itself is O(1), but the action chosen affects the total time cost.
+// Menu logic: O(1) (constant space, no extra memory)
+// Displaying, deleting, or updating: in-place, still O(1)
+// Adding: adds 1 element → O(1)
+// Sorting: insertion → O(1)
 const mainMenu = () => {
   readline.question( //built-in readline module to take user input.  //Prompts the user to choose an action (1–7) //Based on the user's input, it: callback function call after the main function execution and takes the input  
     `\nChoose an action:
@@ -142,7 +146,10 @@ Enter your choice (1-7): `,
         case '6':
           readline.question("Enter attribute to filter: ", (attr) => {
           readline.question("Enter value to filter: ", (value) => {
-            const filtered = filterByAtribute(attr, Number(value)); //Asks for filter → calls filterByAtribute().
+            if(attr == "price" || attr == "id"){
+              value =  Number(value);
+            }
+            const filtered = filterByAtribute(attr, value); //Asks for filter → calls filterByAtribute().
             display(`Filtered dataset by attribute ${attr} and its value ${value}`, filtered); //O(n)
             mainMenu();
           });
@@ -163,13 +170,10 @@ Enter your choice (1-7): `,
   );
 };
 
-//  menu itself is O(1), but the action chosen affects the total time cost.
-// Menu logic: O(1) (constant space, no extra memory)
-// Displaying, deleting, or updating: in-place, still O(1)
-// Adding: adds 1 element → O(1)
-// Sorting: insertion → O(1)
 
-
+// Binary search
+// Time complexity O(log n)
+// Apply just for id due to its the only filter unique
 const filterById = (id) => {
  // Step 1: Sort by price
   const sorted = sortByAttribute('id');
@@ -193,9 +197,14 @@ const filterById = (id) => {
   return [];
 };
 
-
+// Linear search except on the Id searching
+// Time complexity O(n)
 const filterByAtribute = (attr, value) => {
   const result = [];
+
+  if(attr == 'id'){
+    return filterById(value);
+  }
 
   for (let i = 0; i < dataset.length; i++) {
     if (dataset[i][attr] === value) {
